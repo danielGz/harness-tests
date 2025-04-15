@@ -1,0 +1,12 @@
+template:
+  name: git-template
+  identifier: gittemplate
+  versionLabel: "0.1"
+  type: Step
+  projectIdentifier: edgarproject
+  orgIdentifier: DoNotDelete_MigratorOrg
+  tags: {}
+  spec:
+    type: Wait
+    spec:
+      duration: 10m
