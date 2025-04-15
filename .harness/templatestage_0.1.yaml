@@ -1,0 +1,19 @@
+template:
+  name: template-stage
+  identifier: templatestage
+  versionLabel: "0.1"
+  type: Stage
+  projectIdentifier: edgarproject
+  orgIdentifier: DoNotDelete_MigratorOrg
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              type: Wait
+              name: Wait_1
+              identifier: Wait_1
+              spec:
+                duration: 10m
