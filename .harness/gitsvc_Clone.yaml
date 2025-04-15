@@ -1,0 +1,11 @@
+---
+service:
+  orgIdentifier: "DoNotDelete_MigratorOrg"
+  projectIdentifier: "edgarproject"
+  serviceDefinition:
+    spec: {}
+    type: "Kubernetes"
+  identifier: "gitsvc_Clone"
+  description: ""
+  tags: {}
+  name: "git-svc - Clone"
