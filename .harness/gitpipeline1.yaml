@@ -1,0 +1,22 @@
+pipeline:
+  name: git-pipeline-1
+  identifier: gitpipeline1
+  projectIdentifier: edgarproject
+  orgIdentifier: DoNotDelete_MigratorOrg
+  tags: {}
+  stages:
+    - stage:
+        name: wait
+        identifier: wait
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: Wait
+                  name: Wait_1
+                  identifier: Wait_1
+                  spec:
+                    duration: 10m
+        tags: {}
