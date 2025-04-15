@@ -1,0 +1,8 @@
+service:
+  name: git-svc
+  identifier: gitsvc
+  orgIdentifier: DoNotDelete_MigratorOrg
+  projectIdentifier: edgarproject
+  serviceDefinition:
+    spec: {}
+    type: Kubernetes
