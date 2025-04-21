@@ -1,0 +1,11 @@
+---
+service:
+  orgIdentifier: "DoNotDelete_MigratorOrg"
+  projectIdentifier: "edgarproject"
+  serviceDefinition:
+    spec: {}
+    type: "Kubernetes"
+  description: ""
+  tags: {}
+  identifier: "gitsvcnew"
+  name: "git-svc-new"
