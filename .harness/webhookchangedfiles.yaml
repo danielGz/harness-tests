@@ -1,0 +1,32 @@
+pipeline:
+  name: webhook-changed-files
+  identifier: webhookchangedfiles
+  projectIdentifier: edgarproject
+  orgIdentifier: DoNotDelete_MigratorOrg
+  tags: {}
+  stages:
+    - stage:
+        name: get-webhook-data
+        identifier: getwebhookdata
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          echo "Getting data from webhook"
+                          echo <+trigger.changedFiles>
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
