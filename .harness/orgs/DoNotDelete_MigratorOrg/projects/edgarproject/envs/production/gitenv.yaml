@@ -1,0 +1,6 @@
+environment:
+  name: git-env
+  identifier: gitenv
+  orgIdentifier: DoNotDelete_MigratorOrg
+  projectIdentifier: edgarproject
+  type: PreProduction
