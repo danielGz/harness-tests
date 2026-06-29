@@ -1,0 +1,50 @@
+{
+  "group": {
+    "name": "${{inputs.app_name}}",
+    "capacity": {
+      "minimum": 0,
+      "maximum": 1,
+      "target": 0,
+      "unit": "instance"
+    },
+    "strategy": {
+      "risk": 100,
+      "availabilityVsCost": "balanced",
+      "drainingTimeout": 120,
+      "fallbackToOd": true,
+      "revertToSpot": {
+        "performAt": "always"
+      }
+    },
+    "compute": {
+      "instanceTypes": {
+        "ondemand": "t3.small",
+        "spot": [
+          "t3.small",
+          "t3a.small",
+          "t2.small"
+        ]
+      },
+      "availabilityZones": [
+        {
+          "name": "${{inputs.availability_zone}}",
+          "subnetIds": [
+            "${{inputs.subnet_id}}"
+          ]
+        }
+      ],
+      "product": "Linux/UNIX",
+      "launchSpecification": {
+        "securityGroupIds": [
+          "${{inputs.security_group_id}}"
+        ],
+        "monitoring": false,
+        "ebsOptimized": false,
+        "imageId": "${{artifact.image}}",
+        "tenancy": "default"
+      }
+    },
+    "scaling": {},
+    "scheduling": {}
+  }
+}
