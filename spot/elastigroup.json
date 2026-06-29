@@ -1,6 +1,6 @@
 {
   "group": {
-    "name": "${{inputs.app_name}}",
+    "name": "<+pipeline.variables.app_name>",
     "capacity": {
       "minimum": 0,
       "maximum": 1,
@@ -27,20 +27,20 @@
       },
       "availabilityZones": [
         {
-          "name": "${{inputs.availability_zone}}",
+          "name": "<+pipeline.variables.availability_zone>",
           "subnetIds": [
-            "${{inputs.subnet_id}}"
+            "<+pipeline.variables.subnet_id>"
           ]
         }
       ],
       "product": "Linux/UNIX",
       "launchSpecification": {
         "securityGroupIds": [
-          "${{inputs.security_group_id}}"
+          "<+pipeline.variables.security_group_id>"
         ],
         "monitoring": false,
         "ebsOptimized": false,
-        "imageId": "${{artifact.image}}",
+        "imageId": "<+artifact.image>",
         "tenancy": "default"
       }
     },

@@ -2,39 +2,39 @@
 
 Minimal Harness Code repo content for testing **unified Spot**:
 
-- `elastigroup.json` → manifest code fetch → `${{service.manifests.spot.config}}`
-- `scripts/startup.sh` → startup-script code fetch → `${{service.startupScript.content}}`
+- `elastigroup.json` → manifest code fetch → `<+service.manifests.spot.config>`
+- `scripts/startup.sh` → startup-script code fetch → `<+service.startupScript.content>`
 
 ## Expression placeholders in `elastigroup.json`
 
-Account-specific values use unified `${{ }}` syntax so you can push to **GitHub** safely and resolve at runtime via pipeline inputs + artifact.
+Account-specific values use v0 `<+ >` syntax so you can push to **GitHub** safely and resolve at runtime via pipeline variables + artifact.
 
 | JSON path | Expression | Was (hardcoded) | Supply at runtime via |
 |-----------|------------|-----------------|------------------------|
-| `group.name` | `${{inputs.app_name}}` | `placeholder` | Pipeline/stage input |
-| `group.compute.availabilityZones[0].name` | `${{inputs.availability_zone}}` | `us-east-1a` | Pipeline input (e.g. `us-east-1a`) |
-| `group.compute.availabilityZones[0].subnetIds[0]` | `${{inputs.subnet_id}}` | `subnet-4c0a1873` | Pipeline input |
-| `group.compute.launchSpecification.securityGroupIds[0]` | `${{inputs.security_group_id}}` | `sg-0ab7a1dcd33864fbe` | Pipeline input |
-| `group.compute.launchSpecification.imageId` | `${{artifact.image}}` | `ami-0e8b27000f99d833c` | Service AMI artifact (no input needed in CD) |
+| `group.name` | `<+pipeline.variables.app_name>` | `placeholder` | Pipeline/stage variable |
+| `group.compute.availabilityZones[0].name` | `<+pipeline.variables.availability_zone>` | `us-east-1a` | Pipeline variable (e.g. `us-east-1a`) |
+| `group.compute.availabilityZones[0].subnetIds[0]` | `<+pipeline.variables.subnet_id>` | `subnet-4c0a1873` | Pipeline variable |
+| `group.compute.launchSpecification.securityGroupIds[0]` | `<+pipeline.variables.security_group_id>` | `sg-0ab7a1dcd33864fbe` | Pipeline variable |
+| `group.compute.launchSpecification.imageId` | `<+artifact.image>` | `ami-0e8b27000f99d833c` | Service AMI artifact (no variable needed in CD) |
 
 **Left as literals** (not account-specific): instance types, strategy, capacity shell, `product`, monitoring flags.
 
-Example pipeline inputs for a render/deploy test:
+Example pipeline variables for a render/deploy test:
 
 ```yaml
-inputs:
-  app_name:
-    type: string
-    default: spot-unified-test
-  availability_zone:
-    type: string
-    default: us-east-1a
-  subnet_id:
-    type: string
-    default: subnet-xxxxxxxx   # your subnet
-  security_group_id:
-    type: string
-    default: sg-xxxxxxxx       # your SG
+variables:
+  - name: app_name
+    type: String
+    value: spot-unified-test
+  - name: availability_zone
+    type: String
+    value: us-east-1a
+  - name: subnet_id
+    type: String
+    value: subnet-xxxxxxxx   # your subnet
+  - name: security_group_id
+    type: String
+    value: sg-xxxxxxxx       # your SG
 ```
 
 ## Push to Harness Code (project: dan)
