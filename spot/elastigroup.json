@@ -24,12 +24,12 @@
       "availabilityZones": [
         {
           "name": "us-east-1a",
-          "subnetIds": ["subnet-08d80fbdbb1fc3195"]
+          "subnetIds": ["subnet-0aeac5b53ec73dfae"]
         }
       ],
       "product": "Linux/UNIX",
       "launchSpecification": {
-        "securityGroupIds": ["sg-00203c959fc751380"],
+        "securityGroupIds": ["sg-07fab9aa5e364f6bb"],
         "monitoring": false,
         "ebsOptimized": false,
         "imageId": "${{artifact.image}}",
