@@ -1,6 +1,6 @@
 {
   "group": {
-    "name": "<+pipeline.variables.app_name>",
+    "name": "${{project.identifier}}_${{service.identifier}}_${{env.identifier}}",
     "capacity": {
       "minimum": 0,
       "maximum": 1,
@@ -19,28 +19,20 @@
     "compute": {
       "instanceTypes": {
         "ondemand": "t3.small",
-        "spot": [
-          "t3.small",
-          "t3a.small",
-          "t2.small"
-        ]
+        "spot": ["t3.small", "t3a.small", "t2.small"]
       },
       "availabilityZones": [
         {
-          "name": "<+pipeline.variables.availability_zone>",
-          "subnetIds": [
-            "<+pipeline.variables.subnet_id>"
-          ]
+          "name": "us-east-1a",
+          "subnetIds": ["subnet-08d80fbdbb1fc3195"]
         }
       ],
       "product": "Linux/UNIX",
       "launchSpecification": {
-        "securityGroupIds": [
-          "<+pipeline.variables.security_group_id>"
-        ],
+        "securityGroupIds": ["sg-00203c959fc751380"],
         "monitoring": false,
         "ebsOptimized": false,
-        "imageId": "<+artifact.image>",
+        "imageId": "${{artifact.image}}",
         "tenancy": "default"
       }
     },
